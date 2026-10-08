@@ -1,0 +1,1805 @@
+Complete Corrected public/index.html
+
+Copy this entire block and paste it into public/index.html. It replaces everything — no patching needed.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#070b14" />
+<meta name="description" content="DevFolio — Full-stack developer portfolio, projects, and services." />
+<title>DevFolio — Full-Stack Developer Portfolio</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
+
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+
+<style>
+:root {
+  --bg: #070b14;
+  --bg-soft: #0b1120;
+  --surface: rgba(255,255,255,0.035);
+  --surface-2: rgba(255,255,255,0.06);
+  --surface-3: rgba(255,255,255,0.09);
+  --border: rgba(255,255,255,0.08);
+  --border-strong: rgba(255,255,255,0.16);
+  --text: #e9edf7;
+  --text-dim: #b3bccf;
+  --muted: #8b96ad;
+  --violet: #8b5cf6;
+  --cyan: #22d3ee;
+  --emerald: #10b981;
+  --amber: #f59e0b;
+  --rose: #f43f5e;
+  --grad: linear-gradient(135deg, #8b5cf6 0%, #22d3ee 55%, #10b981 100%);
+  --grad-soft: linear-gradient(135deg, rgba(139,92,246,.18), rgba(34,211,238,.12), rgba(16,185,129,.14));
+  --radius-sm: 10px;
+  --radius: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --shadow: 0 24px 60px -24px rgba(0,0,0,0.85);
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --speed: 0.35s;
+  --max: 1180px;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 90px; -webkit-text-size-adjust: 100%; }
+body {
+  font-family: "Poppins", system-ui, sans-serif;
+  background: var(--bg); color: var(--text);
+  line-height: 1.6; font-size: 15px; overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+button, input, textarea, select { font: inherit; color: inherit; }
+::selection { background: rgba(139,92,246,0.4); color: #fff; }
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #8b5cf6, #22d3ee); border-radius: 8px; border: 1px solid var(--bg); }
+
+.bg-fx { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+.blob { position: absolute; border-radius: 50%; filter: blur(100px); opacity: 0.4; will-change: transform; }
+.blob-1 { width: 480px; height: 480px; top: -180px; left: -120px; background: radial-gradient(circle, #8b5cf6, transparent 70%); animation: float1 20s ease-in-out infinite; }
+.blob-2 { width: 420px; height: 420px; top: 35%; right: -180px; background: radial-gradient(circle, #22d3ee, transparent 70%); animation: float2 24s ease-in-out infinite; }
+.blob-3 { width: 380px; height: 380px; bottom: -160px; left: 25%; background: radial-gradient(circle, #10b981, transparent 70%); opacity: 0.3; animation: float3 28s ease-in-out infinite; }
+@keyframes float1 { 0%,100%{transform:translate(0,0)scale(1)} 50%{transform:translate(70px,50px)scale(1.1)} }
+@keyframes float2 { 0%,100%{transform:translate(0,0)scale(1)} 50%{transform:translate(-60px,80px)scale(1.15)} }
+@keyframes float3 { 0%,100%{transform:translate(0,0)scale(1)} 50%{transform:translate(50px,-60px)scale(1.1)} }
+
+.grid-overlay {
+  position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 30%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 30%, transparent 100%);
+}
+
+.hidden { display: none !important; }
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.items-start { align-items: flex-start; }
+.justify-between { justify-content: space-between; }
+.justify-center { justify-content: center; }
+.flex-wrap { flex-wrap: wrap; }
+.gap-1 { gap: 0.25rem; } .gap-2 { gap: 0.5rem; } .gap-3 { gap: 0.75rem; } .gap-4 { gap: 1rem; }
+.text-center { text-align: center; }
+.mt-1 { margin-top: 0.25rem; } .mt-2 { margin-top: 0.5rem; } .mt-3 { margin-top: 0.75rem; } .mt-4 { margin-top: 1rem; }
+.mb-1 { margin-bottom: 0.25rem; } .mb-2 { margin-bottom: 0.5rem; } .mb-3 { margin-bottom: 0.75rem; } .mb-4 { margin-bottom: 1rem; }
+.w-full { width: 100%; }
+.relative { position: relative; }
+
+h1, h2, h3, h4 { font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; }
+h1 { font-size: clamp(1.8rem, 5vw, 3rem); }
+h2 { font-size: clamp(1.3rem, 3vw, 1.9rem); }
+h3 { font-size: 1.05rem; }
+.text-dim { color: var(--text-dim); }
+.text-muted { color: var(--muted); }
+.text-sm { font-size: 0.85rem; }
+.text-xs { font-size: 0.75rem; }
+.text-lime { color: var(--emerald); }
+.text-cyan { color: var(--cyan); }
+.text-rose { color: var(--rose); }
+.text-amber { color: var(--amber); }
+.text-emerald { color: var(--emerald); }
+.text-violet { color: var(--violet); }
+.mono { font-family: "JetBrains Mono", monospace; }
+.eyebrow { display: inline-flex; align-items: center; gap: 0.5rem; font-family: "JetBrains Mono", monospace; font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cyan); margin-bottom: 0.9rem; }
+.eyebrow::before { content: ""; width: 22px; height: 1px; background: var(--cyan); opacity: 0.7; }
+
+.gradient-text { background: var(--grad); background-size: 200% 200%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: gradShift 8s ease infinite; }
+@keyframes gradShift { 0%,100%{background-position:0% 50%} 50%{background-position:100% 50%} }
+
+.btn { position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.75rem 1.5rem; border-radius: 999px; font-size: 0.9rem; font-weight: 600; cursor: pointer; border: 1px solid transparent; overflow: hidden; isolation: isolate; transition: transform var(--speed) var(--ease), box-shadow var(--speed) var(--ease), background var(--speed) var(--ease), border-color var(--speed) var(--ease); }
+.btn-primary { background: var(--grad); background-size: 200% 200%; color: #0a0f1a; box-shadow: 0 12px 34px -12px rgba(139,92,246,0.7); }
+.btn-primary:hover { transform: translateY(-2px); background-position: 100% 0; box-shadow: 0 18px 44px -14px rgba(139,92,246,0.9); }
+.btn-ghost { background: var(--surface); border-color: var(--border-strong); color: var(--text); backdrop-filter: blur(12px); }
+.btn-ghost:hover { transform: translateY(-2px); background: var(--surface-2); border-color: rgba(139,92,246,0.5); }
+.btn-danger { background: rgba(244,63,94,0.15); border-color: rgba(244,63,94,0.4); color: var(--rose); }
+.btn-danger:hover { background: rgba(244,63,94,0.25); }
+.btn-sm { padding: 0.5rem 1rem; font-size: 0.82rem; }
+.btn-block { width: 100%; }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.card { position: relative; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem; backdrop-filter: blur(12px); transition: transform 0.4s var(--ease), border-color 0.4s var(--ease), box-shadow 0.4s var(--ease); }
+.card:hover { transform: translateY(-4px); border-color: rgba(139,92,246,0.25); box-shadow: var(--shadow), 0 0 50px -30px rgba(139,92,246,0.5); }
+.card-stat { padding: 1.25rem; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); backdrop-filter: blur(10px); transition: transform 0.3s var(--ease), border-color 0.3s var(--ease); }
+.card-stat:hover { transform: translateY(-3px); border-color: rgba(34,211,238,0.35); }
+
+.field { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1rem; }
+.field label { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); }
+.field input, .field textarea, .field select { width: 100%; padding: 0.8rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border); background: rgba(255,255,255,0.025); color: var(--text); font-size: 0.92rem; transition: border-color var(--speed) var(--ease), box-shadow var(--speed) var(--ease); }
+.field textarea { resize: vertical; min-height: 100px; }
+.field input::placeholder, .field textarea::placeholder { color: #5c6b85; }
+.field input:focus, .field textarea:focus, .field select:focus { outline: none; border-color: rgba(139,92,246,0.7); background: rgba(139,92,246,0.04); box-shadow: 0 0 0 4px rgba(139,92,246,0.1); }
+.field select option { background: var(--bg-soft); color: var(--text); }
+
+.badge { display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.25rem 0.7rem; border-radius: 999px; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.02em; border: 1px solid var(--border); }
+.badge-violet { background: rgba(139,92,246,0.12); border-color: rgba(139,92,246,0.35); color: var(--violet); }
+.badge-cyan { background: rgba(34,211,238,0.12); border-color: rgba(34,211,238,0.35); color: var(--cyan); }
+.badge-emerald { background: rgba(16,185,129,0.12); border-color: rgba(16,185,129,0.35); color: var(--emerald); }
+.badge-amber { background: rgba(245,158,11,0.12); border-color: rgba(245,158,11,0.35); color: var(--amber); }
+.badge-rose { background: rgba(244,63,94,0.12); border-color: rgba(244,63,94,0.35); color: var(--rose); }
+
+.live-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--emerald); box-shadow: 0 0 0 0 rgba(16,185,129,0.7); animation: pulseGreen 2s infinite; }
+@keyframes pulseGreen { 0% { box-shadow: 0 0 0 0 rgba(16,185,129,0.7); } 70% { box-shadow: 0 0 0 8px rgba(16,185,129,0); } 100% { box-shadow: 0 0 0 0 rgba(16,185,129,0); } }
+
+.container { max-width: var(--max); margin: 0 auto; padding: 0 1.25rem; }
+.section { padding: 3rem 1.25rem; max-width: var(--max); margin: 0 auto; }
+.grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; }
+.grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
+.grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 0.9rem; }
+
+.app-header { position: sticky; top: 0; z-index: 100; background: rgba(7,11,20,0.8); backdrop-filter: blur(18px) saturate(180%); -webkit-backdrop-filter: blur(18px) saturate(180%); border-bottom: 1px solid var(--border); }
+.app-header-inner { max-width: var(--max); margin: 0 auto; padding: 0.85rem 1.25rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.brand { display: flex; align-items: center; gap: 0.6rem; font-weight: 800; font-size: 1.05rem; }
+.brand-mark { width: 34px; height: 34px; border-radius: 10px; background: var(--grad); display: grid; place-items: center; font-size: 0.9rem; color: #0a0f1a; font-family: "JetBrains Mono", monospace; font-weight: 700; box-shadow: 0 6px 20px -6px rgba(139,92,246,0.9); }
+.nav-links { display: flex; align-items: center; gap: 0.35rem; }
+.nav-links a { position: relative; font-size: 0.88rem; font-weight: 500; color: var(--text-dim); padding: 0.5rem 0.85rem; border-radius: 999px; transition: color var(--speed) var(--ease), background var(--speed) var(--ease); }
+.nav-links a:hover { color: var(--text); background: var(--surface-2); }
+.nav-cta { font-size: 0.85rem; font-weight: 600; padding: 0.5rem 1.05rem; border-radius: 999px; background: var(--surface-2); border: 1px solid var(--border-strong); color: var(--text) !important; transition: all var(--speed) var(--ease); }
+.nav-cta:hover { background: var(--grad) !important; border-color: transparent; box-shadow: 0 10px 30px -10px rgba(139,92,246,0.9); transform: translateY(-1px); }
+.header-actions { display: flex; align-items: center; gap: 0.6rem; }
+.icon-btn { position: relative; width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; background: var(--surface-2); border: 1px solid var(--border); cursor: pointer; font-size: 1rem; transition: all var(--speed) var(--ease); }
+.icon-btn:hover { background: var(--surface-3); border-color: var(--border-strong); transform: translateY(-1px); }
+.notif-badge { position: absolute; top: -4px; right: -4px; min-width: 18px; height: 18px; padding: 0 4px; border-radius: 9px; background: var(--rose); color: #fff; font-size: 0.65rem; font-weight: 700; display: grid; place-items: center; border: 2px solid var(--bg); }
+.nav-toggle { display: none; background: var(--surface-2); border: 1px solid var(--border); color: var(--text); font-size: 1.1rem; width: 42px; height: 42px; border-radius: 12px; cursor: pointer; }
+
+.hero { max-width: var(--max); margin: 0 auto; padding: 4rem 1.25rem 3rem; }
+.hero-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 3rem; align-items: center; }
+.hero-badge { display: inline-flex; align-items: center; gap: 0.55rem; padding: 0.4rem 1rem 0.4rem 0.65rem; border-radius: 999px; background: var(--surface); border: 1px solid var(--border); font-size: 0.8rem; font-weight: 500; color: var(--text-dim); margin-bottom: 1.5rem; }
+.hero h1 { letter-spacing: -0.04em; margin-bottom: 1.25rem; }
+.hero p.lead { font-size: clamp(1rem, 1.5vw, 1.1rem); color: var(--text-dim); max-width: 58ch; margin-bottom: 2rem; line-height: 1.75; }
+.hero-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+.hero-stats { display: flex; gap: 2.25rem; flex-wrap: wrap; padding-top: 1.75rem; border-top: 1px solid var(--border); max-width: 600px; }
+.stat-num { font-size: 1.55rem; font-weight: 800; letter-spacing: -0.03em; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; line-height: 1.2; }
+.stat-label { font-size: 0.78rem; color: var(--muted); margin-top: 0.15rem; }
+.profile-photo { width: 100%; max-width: 340px; aspect-ratio: 1; border-radius: var(--radius-xl); margin: 0 auto; background: var(--grad-soft); border: 1px solid var(--border); display: grid; place-items: center; font-size: 6rem; box-shadow: var(--shadow), 0 0 80px -30px rgba(139,92,246,0.6); position: relative; overflow: hidden; }
+
+.project-card { position: relative; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; transition: transform 0.45s var(--ease), border-color 0.45s var(--ease), box-shadow 0.45s var(--ease); }
+.project-card:hover { transform: translateY(-6px); border-color: rgba(139,92,246,0.4); box-shadow: var(--shadow), 0 0 60px -30px rgba(139,92,246,0.6); }
+.project-thumb { aspect-ratio: 16/10; background: var(--grad-soft); display: grid; place-items: center; font-size: 3.5rem; border-bottom: 1px solid var(--border); }
+.project-body { padding: 1.4rem; }
+.project-body h3 { margin-bottom: 0.5rem; }
+.project-body p { color: var(--muted); font-size: 0.9rem; margin-bottom: 1rem; }
+.tech-list { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 1rem; }
+.tech-list span { font-family: "JetBrains Mono", monospace; font-size: 0.67rem; padding: 0.25rem 0.55rem; border-radius: 6px; background: rgba(139,92,246,0.1); border: 1px solid rgba(139,92,246,0.22); color: #c4b5fd; }
+.project-links { display: flex; gap: 1rem; }
+.project-links a { font-size: 0.85rem; font-weight: 600; color: var(--text-dim); transition: color var(--speed) var(--ease); }
+.project-links a:hover { color: var(--cyan); }
+
+.timeline { position: relative; padding-left: 2.25rem; max-width: 780px; }
+.timeline::before { content: ""; position: absolute; left: 7px; top: 8px; bottom: 8px; width: 2px; background: linear-gradient(180deg, var(--violet), var(--cyan), var(--emerald), transparent); opacity: 0.55; border-radius: 2px; }
+.timeline li { position: relative; padding-bottom: 2rem; }
+.timeline li:last-child { padding-bottom: 0; }
+.timeline li::before { content: ""; position: absolute; left: -2.25rem; top: 0.45rem; width: 16px; height: 16px; border-radius: 50%; background: var(--bg); border: 2px solid var(--violet); box-shadow: 0 0 0 4px rgba(139,92,246,0.12), 0 0 18px rgba(139,92,246,0.55); }
+.tl-year { font-family: "JetBrains Mono", monospace; font-size: 0.75rem; color: var(--cyan); margin-bottom: 0.3rem; display: block; }
+.tl-title { font-size: 1.02rem; font-weight: 600; margin-bottom: 0.25rem; }
+.tl-desc { font-size: 0.9rem; color: var(--muted); }
+
+.skills-wrap { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; }
+.skill-group { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem; transition: all var(--speed) var(--ease); }
+.skill-group:hover { border-color: rgba(139,92,246,0.35); transform: translateY(-4px); box-shadow: 0 24px 50px -28px rgba(139,92,246,0.75); }
+.skill-group h3 { font-size: 0.8rem; font-family: "JetBrains Mono", monospace; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cyan); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+.skill-group h3::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 10px var(--cyan); }
+.skill-tags { display: flex; flex-wrap: wrap; gap: 0.55rem; }
+.skill-tags span { font-size: 0.83rem; font-weight: 500; padding: 0.45rem 0.9rem; border-radius: 999px; background: var(--surface-2); border: 1px solid var(--border); color: var(--text-dim); cursor: default; transition: all var(--speed) var(--ease); }
+.skill-tags span:hover { color: #fff; border-color: rgba(139,92,246,0.55); background: rgba(139,92,246,0.14); transform: translateY(-2px); }
+
+.contact-grid { display: grid; grid-template-columns: 1fr 1.25fr; gap: 3rem; align-items: start; }
+.contact-info p { color: var(--muted); margin-bottom: 2rem; max-width: 42ch; }
+.contact-item { display: flex; align-items: center; gap: 0.9rem; padding: 0.85rem 0; border-bottom: 1px solid var(--border); transition: padding-left var(--speed) var(--ease); }
+.contact-item:hover { padding-left: 0.5rem; }
+.contact-item .ci-icon { width: 38px; height: 38px; flex-shrink: 0; border-radius: 11px; display: grid; place-items: center; background: var(--grad-soft); border: 1px solid var(--border); font-size: 0.95rem; }
+.ci-label { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; }
+.ci-value { font-size: 0.92rem; font-weight: 500; }
+
+.table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--border); }
+table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+thead { background: var(--surface-2); }
+th { text-align: left; padding: 0.75rem 1rem; font-weight: 600; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+td { padding: 0.7rem 1rem; border-top: 1px solid var(--border); color: var(--text-dim); }
+tbody tr:hover { background: rgba(255,255,255,0.02); }
+
+.spinner { width: 40px; height: 40px; border-radius: 50%; border: 3px solid rgba(255,255,255,0.1); border-top-color: var(--violet); border-right-color: var(--cyan); animation: spin 0.8s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.toast-wrap { position: fixed; top: 1rem; right: 1rem; z-index: 9999; display: flex; flex-direction: column; gap: 0.5rem; max-width: 340px; }
+.toast { padding: 0.85rem 1.1rem; border-radius: var(--radius); background: rgba(11,17,32,0.95); backdrop-filter: blur(16px); border: 1px solid var(--border); font-size: 0.88rem; box-shadow: var(--shadow); animation: toastIn 0.4s var(--ease); display: flex; align-items: center; gap: 0.6rem; }
+.toast-success { border-color: rgba(16,185,129,0.5); }
+.toast-error { border-color: rgba(244,63,94,0.5); }
+.toast-info { border-color: rgba(34,211,238,0.5); }
+@keyframes toastIn { from { opacity: 0; transform: translateX(40px); } to { opacity: 1; transform: none; } }
+
+.modal-overlay { position: fixed; inset: 0; z-index: 500; background: rgba(0,0,0,0.7); backdrop-filter: blur(6px); display: grid; place-items: center; padding: 1.25rem; animation: fadeIn 0.25s var(--ease); }
+.modal-box { width: 100%; max-width: 560px; max-height: 85vh; overflow-y: auto; background: var(--bg-soft); border: 1px solid var(--border); border-radius: var(--radius-xl); padding: 1.75rem; box-shadow: var(--shadow); animation: modalIn 0.35s var(--ease); }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes modalIn { from { opacity: 0; transform: scale(0.95) translateY(20px); } to { opacity: 1; transform: none; } }
+
+.badge-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(115px, 1fr)); gap: 0.75rem; }
+.badge-item { padding: 1rem 0.75rem; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--border); text-align: center; transition: all var(--speed) var(--ease); }
+.badge-item.unlocked { border-color: rgba(139,92,246,0.4); background: rgba(139,92,246,0.06); box-shadow: 0 0 30px -15px rgba(139,92,246,0.6); }
+.badge-item.locked { opacity: 0.45; filter: grayscale(0.8); }
+.badge-icon { font-size: 1.8rem; margin-bottom: 0.4rem; }
+.badge-name { font-size: 0.72rem; font-weight: 600; }
+
+.service-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.35rem; transition: all var(--speed) var(--ease); }
+.service-card:hover { transform: translateY(-4px); border-color: rgba(34,211,238,0.35); }
+.service-emoji { font-size: 2.2rem; margin-bottom: 0.7rem; }
+.price-old { text-decoration: line-through; color: var(--muted); font-size: 0.82rem; }
+.price-new { font-size: 1.15rem; font-weight: 700; color: var(--emerald); }
+
+.chart-wrap { padding: 1rem 0; overflow-x: auto; }
+.chart-bar { fill: url(#barGrad); transition: opacity 0.3s; cursor: pointer; }
+.chart-bar:hover { opacity: 0.85; }
+.chart-label { fill: var(--muted); font-size: 10px; text-anchor: middle; }
+.chart-value { fill: var(--text); font-size: 10px; text-anchor: middle; font-weight: 600; }
+
+.qr-box { width: 150px; height: 150px; background: #fff; border-radius: 12px; display: grid; place-items: center; margin: 0 auto; padding: 8px; }
+.qr-box img, .qr-box canvas { width: 100% !important; height: 100% !important; }
+
+.auth-wrap { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 2rem 1.25rem; }
+.auth-card { width: 100%; max-width: 440px; padding: 2.2rem; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-xl); backdrop-filter: blur(20px); box-shadow: var(--shadow); position: relative; overflow: hidden; }
+.auth-card::before { content: ""; position: absolute; top: -50%; right: -30%; width: 300px; height: 300px; background: radial-gradient(circle, rgba(139,92,246,0.15), transparent 70%); pointer-events: none; }
+.auth-logo { width: 64px; height: 64px; border-radius: 20px; background: var(--grad); display: grid; place-items: center; font-size: 1.4rem; margin: 0 auto 1rem; font-family: "JetBrains Mono", monospace; font-weight: 700; color: #0a0f1a; box-shadow: 0 12px 34px -12px rgba(139,92,246,0.8); }
+.auth-tabs { display: flex; gap: 0.4rem; margin-bottom: 1.5rem; padding: 0.3rem; background: var(--surface-2); border-radius: 999px; }
+.auth-tab { flex: 1; padding: 0.6rem; border-radius: 999px; border: none; background: none; cursor: pointer; font-size: 0.85rem; font-weight: 600; color: var(--muted); transition: all var(--speed) var(--ease); }
+.auth-tab.active { background: var(--grad); color: #0a0f1a; box-shadow: 0 6px 18px -8px rgba(139,92,246,0.8); }
+
+footer { border-top: 1px solid var(--border); margin-top: 4rem; background: linear-gradient(180deg, transparent, rgba(139,92,246,0.035)); }
+.footer-inner { max-width: var(--max); margin: 0 auto; padding: 2rem 1.25rem; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; }
+.socials { display: flex; gap: 0.6rem; }
+.socials a { width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; background: var(--surface); border: 1px solid var(--border); font-size: 0.9rem; color: var(--text-dim); transition: all var(--speed) var(--ease); }
+.socials a:hover { transform: translateY(-3px); color: #fff; border-color: rgba(139,92,246,0.6); background: rgba(139,92,246,0.15); }
+
+@media (max-width: 900px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .nav-links { position: absolute; top: calc(100% + 1px); left: 1rem; right: 1rem; flex-direction: column; align-items: stretch; gap: 0.25rem; padding: 0.75rem; background: rgba(11,17,32,0.96); backdrop-filter: blur(20px); border: 1px solid var(--border); border-radius: var(--radius); opacity: 0; transform: translateY(-10px); pointer-events: none; transition: opacity var(--speed) var(--ease), transform var(--speed) var(--ease); }
+  .nav-links.open { opacity: 1; transform: translateY(0); pointer-events: auto; }
+  .nav-toggle { display: grid; place-items: center; }
+  .section { padding: 2rem 1rem; }
+  .hero { padding: 3rem 1rem 2rem; }
+}
+@media (max-width: 640px) {
+  .grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .auth-card { padding: 1.6rem; }
+  .modal-box { padding: 1.25rem; }
+}
+@media (max-width: 380px) {
+  .grid-3 { grid-template-columns: 1fr; }
+  .badge-grid { grid-template-columns: repeat(2, 1fr); }
+  .hero-actions .btn { width: 100%; justify-content: center; }
+}
+:focus-visible { outline: 2px solid var(--cyan); outline-offset: 3px; border-radius: 4px; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}
+</style>
+</head>
+<body>
+
+<div class="bg-fx" aria-hidden="true">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+  <div class="grid-overlay"></div>
+</div>
+
+<div class="toast-wrap" id="toastWrap"></div>
+<div id="modalRoot"></div>
+
+<div id="loadingScreen" style="position:fixed;inset:0;z-index:9000;display:grid;place-items:center;background:var(--bg)">
+  <div class="flex-col items-center gap-3">
+    <div class="brand-mark" style="width:56px;height:56px;font-size:1.4rem;border-radius:16px">&lt;/&gt;</div>
+    <div class="spinner"></div>
+    <p class="text-muted text-sm">Loading DevFolio...</p>
+  </div>
+</div>
+
+<div id="app" class="hidden"></div>
+
+<script>
+/* ============================================================
+   CONFIG & STATE
+   ============================================================ */
+const CONFIG = {
+  brand: 'DevFolio',
+  ownerName: 'Aarav Sharma',
+  ownerRole: 'Full-Stack Developer',
+  ownerTagline: 'I design and build fast, accessible, beautiful digital products.',
+  tagline: 'Crafting digital experiences, one project at a time.',
+  email: 'hello@devfolio.dev',
+  location: 'Bengaluru, India',
+  syncKey: 'devfolio_super_secret_key_change_me_2025',
+  apiBase: '/api/sync',
+  pollInterval: 8000,
+  saltPrefix: 'devfolio$v1$',
+  upiId: 'aarav@upi',
+  upiName: 'Aarav Sharma',
+  currency: '₹',
+  debug: false,
+};
+
+const K_ = {
+  session: 'devfolio_session',
+  state: 'devfolio_state_cache',
+  lastSync: 'devfolio_last_sync',
+};
+
+function log(...args) { if (CONFIG.debug) console.log('[DevFolio]', ...args); }
+
+let APP = {
+  users: [], inquiries: [], projects: [], achievements: [],
+  skills: [], services: [], orders: [], payments: [],
+  expenses: [], notifications: [], announcements: [], testimonials: [],
+  meta: { version: 1, updatedAt: null },
+};
+
+let currentUser = null;
+let pollTimer = null;
+let lastServerSnapshot = '';
+
+/* ============================================================
+   CRYPTO
+   ============================================================ */
+async function sha256(text) {
+  const enc = new TextEncoder().encode(text);
+  const buf = await crypto.subtle.digest('SHA-256', enc);
+  return Array.from(new Uint8Array(buf)).map((b) => b.toString(16).padStart(2, '0')).join('');
+}
+async function hashPassword(password, saltKey) {
+  return sha256((saltKey || CONFIG.saltPrefix) + password);
+}
+async function verifyPassword(password, storedHash) {
+  const salts = [CONFIG.saltPrefix, 'devfolio$v1$', 'devfolio$', ''];
+  for (const salt of salts) {
+    const attempt = await sha256(salt + password);
+    if (attempt === storedHash) return true;
+  }
+  return false;
+}
+function isHashed(str) { return typeof str === 'string' && /^[a-f0-9]{64}$/.test(str); }
+
+/* ============================================================
+   SYNC
+   ============================================================ */
+async function syncPull() {
+  try {
+    const res = await fetch(CONFIG.apiBase, { method: 'GET', headers: { 'X-Api-Key': CONFIG.syncKey } });
+    if (!res.ok) throw new Error('Pull failed: ' + res.status);
+    const json = await res.json();
+    return json.data || {};
+  } catch (err) { log('Sync pull failed', err); return null; }
+}
+async function syncPush() {
+  try {
+    const res = await fetch(CONFIG.apiBase, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json', 'X-Api-Key': CONFIG.syncKey },
+      body: JSON.stringify({ data: APP }),
+    });
+    if (!res.ok) throw new Error('Push failed: ' + res.status);
+    localStorage.setItem(K_.lastSync, Date.now().toString());
+    return true;
+  } catch (err) { log('Sync push failed', err); return false; }
+}
+function saveLocal() {
+  try { localStorage.setItem(K_.state, JSON.stringify(APP)); } catch (e) { log('local save failed', e); }
+}
+function loadLocal() {
+  try { const raw = localStorage.getItem(K_.state); if (raw) return JSON.parse(raw); } catch (e) { log('local load failed', e); }
+  return null;
+}
+let saveTimer = null;
+function save() {
+  saveLocal();
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(() => { syncPush(); }, 600);
+}
+
+/* ============================================================
+   DEFAULT CONTENT
+   ============================================================ */
+const DEFAULT_PROJECTS = [
+  { id: 'p1', title: 'Nova Analytics', emoji: '📊', description: 'Real-time analytics dashboard with customizable widgets and drill-down reporting.', tech: ['React', 'Node.js', 'PostgreSQL', 'WebSockets'], demoUrl: '#', codeUrl: '#' },
+  { id: 'p2', title: 'Splitr — Bill Splitter', emoji: '💸', description: 'Mobile-first expense splitter with UPI deep-linking and offline support.', tech: ['Vanilla JS', 'PWA', 'IndexedDB', 'UPI'], demoUrl: '#', codeUrl: '#' },
+  { id: 'p3', title: 'Terra — CMS', emoji: '🌱', description: 'Headless CMS for small business sites with markdown content and image CDN.', tech: ['Next.js', 'Prisma', 'Vercel', 'Cloudinary'], demoUrl: '#', codeUrl: '#' },
+  { id: 'p4', title: 'Pulse Fitness Tracker', emoji: '❤️', description: 'Health tracker that syncs with wearables and visualizes trends over time.', tech: ['Flutter', 'Firebase', 'Chart.js'], demoUrl: '#', codeUrl: '#' },
+];
+const DEFAULT_ACHIEVEMENTS = [
+  { id: 'a1', year: '2024', icon: '🥇', title: 'Winner — National Hackathon 2024', description: 'First place out of 240 teams for a real-time collaboration tool.' },
+  { id: 'a2', year: '2024', icon: '📜', title: 'AWS Solutions Architect Associate', description: 'Certified in designing distributed systems on AWS.' },
+  { id: 'a3', year: '2023', icon: '🚀', title: 'Shipped 20+ Production Apps', description: 'Full-stack apps used by over 100k combined active users.' },
+  { id: 'a4', year: '2022', icon: '🎓', title: 'B.Tech Computer Science — Gold Medalist', description: 'Ranked 1st in department, graduated with distinction.' },
+];
+const DEFAULT_SKILLS = [
+  { id: 's1', category: 'Frontend', skills: ['HTML5', 'CSS3', 'JavaScript', 'React', 'Next.js', 'Tailwind CSS'] },
+  { id: 's2', category: 'Backend', skills: ['Node.js', 'Express', 'Prisma', 'PostgreSQL', 'MongoDB', 'REST APIs'] },
+  { id: 's3', category: 'Tools & Cloud', skills: ['Git', 'GitHub Actions', 'Vercel', 'Docker', 'AWS', 'Figma'] },
+];
+const DEFAULT_SERVICES = [
+  { id: 'sv1', emoji: '💡', name: 'Technical Consultation', description: '45-minute call to discuss your product or architecture.', mrp: 2000, price: 999, unit: 'session' },
+  { id: 'sv2', emoji: '🔍', name: 'Code Review', description: 'Detailed code review of your repo with written feedback.', mrp: 5000, price: 2999, unit: 'repo' },
+  { id: 'sv3', emoji: '🚀', name: 'Landing Page Build', description: 'High-converting responsive landing page, delivered in 5 days.', mrp: 30000, price: 19999, unit: 'project' },
+  { id: 'sv4', emoji: '📚', name: 'Mentorship Session', description: '1-hour personalised mentoring for aspiring developers.', mrp: 3000, price: 1499, unit: 'session' },
+];
+const DEFAULT_TESTIMONIALS = [
+  { id: 't1', author: 'Priya Nair', role: 'Founder, Terra Labs', text: 'Delivered our MVP two weeks early and it just works. Rare mix of speed and quality.' },
+  { id: 't2', author: 'Rahul Verma', role: 'CTO, Nova Analytics', text: 'Clean architecture, thoughtful APIs, and great documentation. Would hire again in a heartbeat.' },
+];
+
+function seedPortfolioContent() {
+  if (!APP.projects?.length) APP.projects = [...DEFAULT_PROJECTS];
+  if (!APP.achievements?.length) APP.achievements = [...DEFAULT_ACHIEVEMENTS];
+  if (!APP.skills?.length) APP.skills = [...DEFAULT_SKILLS];
+  if (!APP.services?.length) APP.services = [...DEFAULT_SERVICES];
+  if (!APP.testimonials?.length) APP.testimonials = [...DEFAULT_TESTIMONIALS];
+}
+
+/* ============================================================
+   BOOT
+   ============================================================ */
+async function boot() {
+  const cached = loadLocal();
+  if (cached) APP = { ...APP, ...cached };
+
+  const remote = await syncPull();
+  if (remote && Object.keys(remote).length > 0) {
+    APP = { ...APP, ...remote };
+    lastServerSnapshot = JSON.stringify(APP);
+  }
+
+  if (!APP.users || APP.users.length === 0) await seedOwner();
+
+  ['users','inquiries','projects','achievements','skills','services','orders','payments','expenses','notifications','announcements','testimonials']
+    .forEach((k) => { if (!Array.isArray(APP[k])) APP[k] = []; });
+
+  seedPortfolioContent();
+  saveLocal();
+
+  const session = localStorage.getItem(K_.session);
+  if (session) {
+    const user = APP.users.find((u) => u.username === session);
+    if (user) {
+      currentUser = user;
+      renderApp();
+      if (user.role === 'owner') startPolling();
+      return;
+    }
+  }
+  renderPublic();
+}
+
+async function seedOwner() {
+  const hash = await hashPassword('owner123');
+  APP.users = [{
+    id: 'owner-' + Date.now(), username: 'owner', passwordHash: hash,
+    name: CONFIG.ownerName, role: 'owner', email: CONFIG.email, phone: '',
+    companyName: 'DevFolio', membershipStatus: 'active',
+    joinedAt: new Date().toISOString(), points: 0, avatarData: null,
+  }];
+  await syncPush();
+}
+
+/* ============================================================
+   POLLING
+   ============================================================ */
+function startPolling() {
+  stopPolling();
+  pollTimer = setInterval(async () => {
+    const remote = await syncPull();
+    if (!remote) return;
+    const snap = JSON.stringify(remote);
+    if (snap !== lastServerSnapshot) {
+      lastServerSnapshot = snap;
+      APP = { ...APP, ...remote };
+      saveLocal();
+      if (currentUser?.role === 'owner') renderOwnerDashboard();
+      showToast('Data refreshed from cloud', 'info');
+    }
+  }, CONFIG.pollInterval);
+}
+function stopPolling() { if (pollTimer) { clearInterval(pollTimer); pollTimer = null; } }
+
+/* ============================================================
+   AUTH
+   ============================================================ */
+async function handleLogin(username, password) {
+  const user = APP.users.find((u) => u.username === username);
+  if (!user) return { ok: false, msg: 'Account not found' };
+  if (!isHashed(user.passwordHash)) {
+    if (user.passwordHash === password) {
+      user.passwordHash = await hashPassword(password);
+      save();
+      return { ok: true, user };
+    }
+    return { ok: false, msg: 'Invalid password' };
+  }
+  const valid = await verifyPassword(password, user.passwordHash);
+  if (!valid) return { ok: false, msg: 'Invalid password' };
+  return { ok: true, user };
+}
+
+async function handleRegister(data) {
+  if (APP.users.find((u) => u.username === data.username)) return { ok: false, msg: 'Username already taken' };
+  const hash = await hashPassword(data.password);
+  const user = {
+    id: 'user-' + Date.now() + '-' + Math.random().toString(36).slice(2, 7),
+    username: data.username, passwordHash: hash, name: data.name, role: 'client',
+    email: data.email || '', phone: data.phone || '', companyName: data.companyName || '',
+    budgetRange: data.budgetRange || '', membershipStatus: 'active',
+    joinedAt: new Date().toISOString(), points: 0, avatarData: null,
+  };
+  APP.users.push(user);
+  save();
+  return { ok: true, user };
+}
+
+function logout() {
+  localStorage.removeItem(K_.session);
+  currentUser = null;
+  stopPolling();
+  renderPublic();
+}
+
+/* ============================================================
+   GAMIFICATION
+   ============================================================ */
+const CLIENT_BADGES = [
+  { id: 'first_inquiry', icon: '💬', name: 'First Contact', desc: 'Sent first message', check: (s) => s.inquiries >= 1 },
+  { id: 'first_order', icon: '🎯', name: 'First Booking', desc: 'Booked a service', check: (s) => s.orders >= 1 },
+  { id: 'three_orders', icon: '🔥', name: 'Returning Client', desc: 'Booked 3+ services', check: (s) => s.orders >= 3 },
+  { id: 'five_orders', icon: '⭐', name: 'Loyal Client', desc: 'Booked 5+ services', check: (s) => s.orders >= 5 },
+  { id: 'paid_client', icon: '💳', name: 'Verified Client', desc: 'Completed a payment', check: (s) => s.payments >= 1 },
+  { id: 'big_spender', icon: '💎', name: 'Big Spender', desc: 'Spent over ₹25,000', check: (s) => s.spent >= 25000 },
+  { id: 'points_100', icon: '🌟', name: 'Rising Star', desc: 'Earned 100 points', check: (s) => s.points >= 100 },
+  { id: 'points_500', icon: '👑', name: 'VIP Client', desc: 'Earned 500 points', check: (s) => s.points >= 500 },
+  { id: 'testimonial', icon: '📝', name: 'Voice of Praise', desc: 'Left a testimonial', check: (s) => s.testimonials >= 1 },
+  { id: 'referral', icon: '🤝', name: 'Referrer', desc: 'Referred a friend', check: (s) => s.referrals >= 1 },
+  { id: 'loyal_6mo', icon: '🏆', name: 'Long-Term Partner', desc: '6+ months with us', check: (s) => s.monthsActive >= 6 },
+  { id: 'profile_complete', icon: '✅', name: 'Complete Profile', desc: 'Filled all profile fields', check: (s) => s.profileComplete },
+];
+
+function computeClientStats(user) {
+  const inquiries = APP.inquiries.filter((i) => i.userId === user.id).length;
+  const orders = APP.orders.filter((o) => o.userId === user.id).length;
+  const payments = APP.payments.filter((p) => p.userId === user.id && p.status === 'approved').length;
+  const spent = APP.payments.filter((p) => p.userId === user.id && p.status === 'approved').reduce((sum, p) => sum + Number(p.amount || 0), 0);
+  const testimonials = APP.testimonials.filter((t) => t.userId === user.id).length;
+  const monthsActive = user.joinedAt ? Math.max(0, Math.floor((Date.now() - new Date(user.joinedAt).getTime()) / (30 * 24 * 60 * 60 * 1000))) : 0;
+  const profileComplete = !!(user.name && user.email && user.phone && user.companyName);
+  return { inquiries, orders, payments, spent, testimonials, referrals: 0, monthsActive, profileComplete, points: user.points || 0 };
+}
+function getClientBadges(user) {
+  const s = computeClientStats(user);
+  return CLIENT_BADGES.map((b) => ({ ...b, unlocked: b.check(s) }));
+}
+
+/* ============================================================
+   UPI / QR
+   ============================================================ */
+function buildUpiLink(amount, note, ref) {
+  const params = new URLSearchParams({ pa: CONFIG.upiId, pn: CONFIG.upiName, cu: 'INR', am: amount.toString(), tn: note || 'Service payment', tr: ref || 'DF' + Date.now() });
+  return 'upi://pay?' + params.toString();
+}
+function renderQr(container, text) {
+  container.innerHTML = '';
+  if (typeof QRCode === 'undefined') { container.innerHTML = '<p class="text-xs text-muted">QR unavailable</p>'; return; }
+  new QRCode(container, { text, width: 150, height: 150, colorDark: '#070b14', colorLight: '#ffffff', correctLevel: QRCode.CorrectLevel.M });
+}
+
+/* ============================================================
+   UTILITIES
+   ============================================================ */
+function fmtCurrency(n) { return CONFIG.currency + Number(n || 0).toLocaleString('en-IN'); }
+function fmtDate(iso) { if (!iso) return '—'; return new Date(iso).toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' }); }
+function fmtDateTime(iso) { if (!iso) return '—'; return new Date(iso).toLocaleString('en-IN', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' }); }
+function uid(prefix) { return (prefix || 'id') + '-' + Date.now() + '-' + Math.random().toString(36).slice(2, 7); }
+function escapeHtml(str) {
+  if (str === null || str === undefined) return '';
+  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;');
+}
+
+/* ============================================================
+   TOAST & MODAL
+   ============================================================ */
+function showToast(msg, type = 'info') {
+  const wrap = document.getElementById('toastWrap');
+  const el = document.createElement('div');
+  el.className = 'toast toast-' + type;
+  const icons = { success: '✅', error: '⚠️', info: 'ℹ️' };
+  el.innerHTML = '<span>' + (icons[type] || 'ℹ️') + '</span><span>' + escapeHtml(msg) + '</span>';
+  wrap.appendChild(el);
+  setTimeout(() => { el.style.opacity = '0'; el.style.transform = 'translateX(40px)'; setTimeout(() => el.remove(), 300); }, 3200);
+}
+function showModal(html) {
+  document.getElementById('modalRoot').innerHTML = '<div class="modal-overlay" onclick="if(event.target===this)closeModal()"><div class="modal-box">' + html + '</div></div>';
+}
+function closeModal() { document.getElementById('modalRoot').innerHTML = ''; }
+
+/* ============================================================
+   PUBLIC VIEW
+   ============================================================ */
+function renderPublic() {
+  document.getElementById('loadingScreen').classList.add('hidden');
+  const app = document.getElementById('app');
+  app.classList.remove('hidden');
+
+  const featuredProjects = APP.projects.slice(0, 4);
+  const testimonials = APP.testimonials.slice(0, 3);
+
+  app.innerHTML = `
+    <header class="app-header">
+      <div class="app-header-inner">
+        <div class="brand"><div class="brand-mark">&lt;/&gt;</div><span>${CONFIG.brand}</span></div>
+        <nav class="nav-links" id="navLinks">
+          <a href="#profile">Profile</a>
+          <a href="#projects">Projects</a>
+          <a href="#achievements">Achievements</a>
+          <a href="#skills">Skills</a>
+          <a href="#services">Services</a>
+          <a href="#contact">Contact</a>
+          <a href="#" class="nav-cta" onclick="event.preventDefault();renderAuth();">Client Login</a>
+        </nav>
+        <button class="nav-toggle" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
+      </div>
+    </header>
+
+    <main>
+      <section id="profile" class="hero">
+        <div class="hero-grid">
+          <div>
+            <div class="hero-badge"><span class="live-dot"></span> Available for freelance & full-time roles</div>
+            <h1>Hi, I'm <span class="gradient-text">${escapeHtml(CONFIG.ownerName)}</span>.<br/>${escapeHtml(CONFIG.ownerRole)}.</h1>
+            <p class="lead">${escapeHtml(CONFIG.ownerTagline)}</p>
+            <div class="hero-actions">
+              <a href="#projects" class="btn btn-primary">View My Work →</a>
+              <a href="#contact" class="btn btn-ghost">Get In Touch</a>
+            </div>
+            <div class="hero-stats">
+              <div><div class="stat-num">5+</div><div class="stat-label">Years Experience</div></div>
+              <div><div class="stat-num">${APP.projects.length}+</div><div class="stat-label">Projects Shipped</div></div>
+              <div><div class="stat-num">${APP.achievements.length}</div><div class="stat-label">Major Achievements</div></div>
+            </div>
+          </div>
+          <div><div class="profile-photo">👨‍💻</div></div>
+        </div>
+      </section>
+
+      <section id="projects" class="section">
+        <div class="eyebrow">Selected Work</div>
+        <h2 class="mb-4">Projects I'm proud of</h2>
+        <div class="grid-3">
+          ${featuredProjects.map((p) => `
+            <article class="project-card">
+              <div class="project-thumb">${p.emoji || '💻'}</div>
+              <div class="project-body">
+                <h3>${escapeHtml(p.title)}</h3>
+                <p>${escapeHtml(p.description)}</p>
+                <div class="tech-list">${(p.tech || []).map((t) => `<span>${escapeHtml(t)}</span>`).join('')}</div>
+                <div class="project-links">
+                  ${p.demoUrl ? `<a href="${escapeHtml(p.demoUrl)}" target="_blank" rel="noopener">Live →</a>` : ''}
+                  ${p.codeUrl ? `<a href="${escapeHtml(p.codeUrl)}" target="_blank" rel="noopener">Source →</a>` : ''}
+                </div>
+              </div>
+            </article>
+          `).join('')}
+        </div>
+      </section>
+
+      <section id="achievements" class="section">
+        <div class="eyebrow">Milestones</div>
+        <h2 class="mb-4">Achievements & Certifications</h2>
+        <ul class="timeline">
+          ${APP.achievements.map((a) => `
+            <li>
+              <span class="tl-year">${escapeHtml(a.year)}</span>
+              <div class="tl-title">${a.icon} ${escapeHtml(a.title)}</div>
+              <p class="tl-desc">${escapeHtml(a.description)}</p>
+            </li>
+          `).join('')}
+        </ul>
+      </section>
+
+      <section id="skills" class="section">
+        <div class="eyebrow">Toolkit</div>
+        <h2 class="mb-4">Skills & Technologies</h2>
+        <div class="skills-wrap">
+          ${APP.skills.map((g) => `
+            <div class="skill-group">
+              <h3>${escapeHtml(g.category)}</h3>
+              <div class="skill-tags">${(g.skills || []).map((s) => `<span>${escapeHtml(s)}</span>`).join('')}</div>
+            </div>
+          `).join('')}
+        </div>
+      </section>
+
+      ${testimonials.length ? `
+        <section class="section">
+          <div class="eyebrow">Kind Words</div>
+          <h2 class="mb-4">What clients say</h2>
+          <div class="grid-3">
+            ${testimonials.map((t) => `
+              <div class="card">
+                <p class="text-dim" style="font-style:italic;margin-bottom:1rem">"${escapeHtml(t.text)}"</p>
+                <div class="flex items-center gap-3">
+                  <div style="width:38px;height:38px;border-radius:50%;background:var(--grad);display:grid;place-items:center;font-weight:700;color:#0a0f1a">${escapeHtml(t.author.charAt(0))}</div>
+                  <div>
+                    <div style="font-weight:600;font-size:0.88rem">${escapeHtml(t.author)}</div>
+                    <div class="text-xs text-muted">${escapeHtml(t.role)}</div>
+                  </div>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </section>
+      ` : ''}
+
+      <section id="services" class="section">
+        <div class="eyebrow">Hire Me</div>
+        <h2 class="mb-2">Services & Packages</h2>
+        <p class="text-muted mb-4">Pick a service, pay via UPI, and I'll get to work. Login to book.</p>
+        <div class="grid-2">
+          ${APP.services.map((s) => `
+            <div class="service-card">
+              <div class="service-emoji">${s.emoji || '✨'}</div>
+              <h3>${escapeHtml(s.name)}</h3>
+              <p class="text-muted text-sm mb-3">${escapeHtml(s.description)}</p>
+              <div class="flex items-center gap-2 mb-3">
+                <span class="price-new">${fmtCurrency(s.price)}</span>
+                <span class="price-old">${fmtCurrency(s.mrp)}</span>
+                <span class="text-xs text-muted">/ ${escapeHtml(s.unit || 'unit')}</span>
+              </div>
+              <button class="btn btn-primary btn-block" onclick="requireLogin('${s.id}')">Book Now</button>
+            </div>
+          `).join('')}
+        </div>
+      </section>
+
+      <section id="contact" class="section">
+        <div class="eyebrow">Contact</div>
+        <h2 class="mb-4">Let's build something together</h2>
+        <div class="contact-grid">
+          <div class="contact-info">
+            <p>Have a project, role, or question? Drop a message — I typically reply within 24 hours.</p>
+            <div class="contact-item"><div class="ci-icon">✉</div><div><div class="ci-label">Email</div><div class="ci-value">${escapeHtml(CONFIG.email)}</div></div></div>
+            <div class="contact-item"><div class="ci-icon">📍</div><div><div class="ci-label">Location</div><div class="ci-value">${escapeHtml(CONFIG.location)}</div></div></div>
+            <div class="contact-item"><div class="ci-icon">💼</div><div><div class="ci-label">Status</div><div class="ci-value">Open to opportunities</div></div></div>
+          </div>
+
+          <form class="card" onsubmit="submitPublicInquiry(event)">
+            <div class="field"><label>Name</label><input id="ciName" type="text" placeholder="Your name" required /></div>
+            <div class="field"><label>Email</label><input id="ciEmail" type="email" placeholder="you@example.com" required /></div>
+            <div class="field"><label>Subject</label><input id="ciSubject" type="text" placeholder="Project inquiry" required /></div>
+            <div class="field"><label>Message</label><textarea id="ciMessage" placeholder="Tell me about your project..." required></textarea></div>
+            <button type="submit" class="btn btn-primary btn-block">Send Message</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-inner">
+        <p class="text-sm text-muted">© ${new Date().getFullYear()} ${escapeHtml(CONFIG.ownerName)}. Built with care.</p>
+        <div class="socials">
+          <a href="#" aria-label="GitHub">GH</a>
+          <a href="#" aria-label="LinkedIn">in</a>
+          <a href="#" aria-label="Twitter">X</a>
+          <a href="#" aria-label="Email">✉</a>
+        </div>
+      </div>
+    </footer>
+  `;
+
+  document.querySelectorAll('.nav-links a[href^="#"]').forEach((a) => {
+    a.addEventListener('click', () => { document.getElementById('navLinks').classList.remove('open'); });
+  });
+}
+
+function requireLogin(serviceId) {
+  sessionStorage.setItem('pendingService', serviceId || '');
+  showToast('Please log in to book a service', 'info');
+  setTimeout(() => renderAuth(), 700);
+}
+
+function submitPublicInquiry(e) {
+  e.preventDefault();
+  const inquiry = {
+    id: uid('inq'), userId: currentUser?.id || null,
+    name: document.getElementById('ciName').value.trim(),
+    email: document.getElementById('ciEmail').value.trim(),
+    subject: document.getElementById('ciSubject').value.trim(),
+    message: document.getElementById('ciMessage').value.trim(),
+    status: 'new', createdAt: new Date().toISOString(),
+  };
+  if (!inquiry.name || !inquiry.email || !inquiry.subject || !inquiry.message) { showToast('Please fill all fields', 'error'); return; }
+  APP.inquiries.push(inquiry);
+  APP.notifications.push({ id: uid('notif'), userId: 'owner', title: 'New inquiry from ' + inquiry.name, body: inquiry.subject, read: false, createdAt: new Date().toISOString() });
+  save();
+  e.target.reset();
+  showToast('Message sent! I will reply soon.', 'success');
+}
+
+/* ============================================================
+   AUTH SCREEN
+   ============================================================ */
+function renderAuth() {
+  document.getElementById('loadingScreen').classList.add('hidden');
+  const app = document.getElementById('app');
+  app.classList.remove('hidden');
+  app.innerHTML = `
+    <div class="auth-wrap">
+      <div class="auth-card">
+        <div class="text-center mb-4">
+          <div class="auth-logo">&lt;/&gt;</div>
+          <h1 style="font-size:1.4rem">${CONFIG.brand}</h1>
+          <p class="text-muted text-sm">${CONFIG.tagline}</p>
+        </div>
+
+        <div class="auth-tabs">
+          <button class="auth-tab active" id="tabLogin" onclick="switchAuthTab('login')">Login</button>
+          <button class="auth-tab" id="tabRegister" onclick="switchAuthTab('register')">Register</button>
+        </div>
+
+        <form id="loginForm" onsubmit="onLoginSubmit(event)">
+          <div class="field"><label>Username</label><input id="loginUser" type="text" placeholder="owner" required autocomplete="username" /></div>
+          <div class="field"><label>Password</label><input id="loginPass" type="password" placeholder="••••••••" required autocomplete="current-password" /></div>
+          <button type="submit" class="btn btn-primary btn-block mt-2">Sign In</button>
+          <p class="text-xs text-muted text-center mt-4">Owner demo: <strong>owner / owner123</strong></p>
+          <p class="text-xs text-muted text-center mt-1"><a href="#" onclick="event.preventDefault();renderPublic()" style="color:var(--cyan)">← Back to portfolio</a></p>
+        </form>
+
+        <form id="registerForm" class="hidden" onsubmit="onRegisterSubmit(event)">
+          <div class="field"><label>Full Name</label><input id="regName" type="text" placeholder="Jane Doe" required /></div>
+          <div class="field"><label>Username</label><input id="regUser" type="text" placeholder="janedoe" required /></div>
+          <div class="field"><label>Email</label><input id="regEmail" type="email" placeholder="jane@company.com" required /></div>
+          <div class="field"><label>Password</label><input id="regPass" type="password" placeholder="Min 6 characters" minlength="6" required /></div>
+          <div class="field"><label>Phone</label><input id="regPhone" type="tel" placeholder="+91 98765 43210" /></div>
+          <div class="field"><label>Company</label><input id="regCompany" type="text" placeholder="Acme Inc." /></div>
+          <button type="submit" class="btn btn-primary btn-block mt-2">Create Account</button>
+        </form>
+      </div>
+    </div>
+  `;
+}
+
+function switchAuthTab(tab) {
+  const isLogin = tab === 'login';
+  document.getElementById('tabLogin').classList.toggle('active', isLogin);
+  document.getElementById('tabRegister').classList.toggle('active', !isLogin);
+  document.getElementById('loginForm').classList.toggle('hidden', !isLogin);
+  document.getElementById('registerForm').classList.toggle('hidden', isLogin);
+}
+
+async function onLoginSubmit(e) {
+  e.preventDefault();
+  const username = document.getElementById('loginUser').value.trim().toLowerCase();
+  const password = document.getElementById('loginPass').value;
+  const result = await handleLogin(username, password);
+  if (!result.ok) { showToast(result.msg, 'error'); return; }
+  currentUser = result.user;
+  localStorage.setItem(K_.session, currentUser.username);
+  showToast('Welcome back, ' + currentUser.name + '!', 'success');
+  renderApp();
+  if (currentUser.role === 'owner') startPolling();
+  const pending = sessionStorage.getItem('pendingService');
+  if (pending && currentUser.role === 'client') {
+    sessionStorage.removeItem('pendingService');
+    setTimeout(() => bookService(pending), 400);
+  }
+}
+
+async function onRegisterSubmit(e) {
+  e.preventDefault();
+  const data = {
+    name: document.getElementById('regName').value.trim(),
+    username: document.getElementById('regUser').value.trim().toLowerCase(),
+    email: document.getElementById('regEmail').value.trim(),
+    password: document.getElementById('regPass').value,
+    phone: document.getElementById('regPhone').value.trim(),
+    companyName: document.getElementById('regCompany').value.trim(),
+  };
+  const result = await handleRegister(data);
+  if (!result.ok) { showToast(result.msg, 'error'); return; }
+  APP.notifications.push({ id: uid('notif'), userId: result.user.id, title: 'Welcome to ' + CONFIG.brand + '!', body: 'Explore services and book your first consultation.', read: false, createdAt: new Date().toISOString() });
+  save();
+  currentUser = result.user;
+  localStorage.setItem(K_.session, currentUser.username);
+  showToast('Account created! Welcome aboard.', 'success');
+  renderApp();
+}
+
+/* ============================================================
+   APP SHELL
+   ============================================================ */
+function renderApp() {
+  document.getElementById('loadingScreen').classList.add('hidden');
+  const app = document.getElementById('app');
+  app.classList.remove('hidden');
+  const unread = APP.notifications.filter((n) => n.userId === currentUser.id && !n.read).length;
+
+  app.innerHTML = `
+    <header class="app-header">
+      <div class="app-header-inner">
+        <div class="brand"><div class="brand-mark">&lt;/&gt;</div><span>${CONFIG.brand}</span></div>
+        <div class="header-actions">
+          ${currentUser.role === 'owner' ? `<div class="flex items-center gap-2 badge badge-emerald" title="Live sync"><span class="live-dot"></span> Live</div>` : ''}
+          <button class="icon-btn" onclick="renderPublic()" title="View public site">🌐</button>
+          <button class="icon-btn" onclick="showNotifications()" title="Notifications">🔔${unread > 0 ? `<span class="notif-badge">${unread > 9 ? '9+' : unread}</span>` : ''}</button>
+          <button class="icon-btn" onclick="showProfile()" title="Profile">👤</button>
+          <button class="icon-btn" onclick="logout()" title="Logout">🚪</button>
+        </div>
+      </div>
+    </header>
+    <main id="mainView"></main>
+  `;
+
+  if (currentUser.role === 'owner') renderOwnerDashboard();
+  else renderClientDashboard();
+}
+
+/* ============================================================
+   CLIENT DASHBOARD
+   ============================================================ */
+function renderClientDashboard() {
+  const main = document.getElementById('mainView');
+  const stats = computeClientStats(currentUser);
+  const myOrders = APP.orders.filter((o) => o.userId === currentUser.id);
+  const myPayments = APP.payments.filter((p) => p.userId === currentUser.id);
+  const pendingPayment = myPayments.find((p) => p.status === 'pending');
+  if (pendingPayment) { renderPaymentWaiting(main, pendingPayment); return; }
+
+  main.innerHTML = `
+    <div class="section">
+      <div class="card mb-4" style="background:var(--grad-soft);border-color:rgba(139,92,246,0.35)">
+        <h2>Welcome back, ${escapeHtml(currentUser.name.split(' ')[0])} 👋</h2>
+        <p class="text-dim mt-1">Manage your bookings, view history, and explore new services.</p>
+      </div>
+
+      <div class="grid-4 mb-4">
+        <div class="card-stat"><div class="text-xs text-muted">Bookings</div><div style="font-size:1.6rem;font-weight:800" class="text-violet">${stats.orders}</div></div>
+        <div class="card-stat"><div class="text-xs text-muted">Total Spent</div><div style="font-size:1.3rem;font-weight:800" class="text-emerald">${fmtCurrency(stats.spent)}</div></div>
+        <div class="card-stat"><div class="text-xs text-muted">Points</div><div style="font-size:1.6rem;font-weight:800" class="text-cyan">${stats.points}</div></div>
+        <div class="card-stat"><div class="text-xs text-muted">Inquiries</div><div style="font-size:1.6rem;font-weight:800">${stats.inquiries}</div></div>
+      </div>
+
+      <div class="card mb-4">
+        <h3 class="mb-3">Quick Actions</h3>
+        <div class="flex gap-2 flex-wrap">
+          <button class="btn btn-primary btn-sm" onclick="showClientServices()">🛒 Browse Services</button>
+          <button class="btn btn-ghost btn-sm" onclick="showClientHistory()">📋 My History</button>
+          <button class="btn btn-ghost btn-sm" onclick="showLeaveTestimonial()">⭐ Leave Testimonial</button>
+        </div>
+      </div>
+
+      ${myOrders.length ? `
+        <div class="card mb-4">
+          <h3 class="mb-3">Recent Bookings</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Service</th><th>Amount</th><th>Status</th><th>Date</th></tr></thead>
+              <tbody>
+                ${myOrders.slice().reverse().slice(0, 5).map((o) => `
+                  <tr>
+                    <td>${escapeHtml(o.serviceName)}</td>
+                    <td>${fmtCurrency(o.price)}</td>
+                    <td><span class="badge ${o.status === 'delivered' ? 'badge-emerald' : o.status === 'in-progress' ? 'badge-cyan' : 'badge-amber'}">${escapeHtml(o.status)}</span></td>
+                    <td>${fmtDate(o.createdAt)}</td>
+                  </tr>
+                `).join('')}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      ` : ''}
+
+      <div class="card mb-4">
+        <div class="flex justify-between items-center mb-4">
+          <h3>🏅 Achievements</h3>
+          <span class="badge badge-violet">${getClientBadges(currentUser).filter((b) => b.unlocked).length} / ${CLIENT_BADGES.length}</span>
+        </div>
+        <div class="badge-grid">
+          ${getClientBadges(currentUser).map((b) => `
+            <div class="badge-item ${b.unlocked ? 'unlocked' : 'locked'}" title="${escapeHtml(b.desc)}">
+              <div class="badge-icon">${b.icon}</div>
+              <div class="badge-name">${escapeHtml(b.name)}</div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="mb-3">⭐ How Points Work</h3>
+        <div class="grid-2">
+          <div class="flex items-center gap-2"><span class="badge badge-violet">+10</span><span class="text-sm text-dim">Send an inquiry</span></div>
+          <div class="flex items-center gap-2"><span class="badge badge-cyan">+25</span><span class="text-sm text-dim">Book a service</span></div>
+          <div class="flex items-center gap-2"><span class="badge badge-emerald">+50</span><span class="text-sm text-dim">Complete a project</span></div>
+          <div class="flex items-center gap-2"><span class="badge badge-amber">+75</span><span class="text-sm text-dim">Leave a testimonial</span></div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function renderPaymentWaiting(main, payment) {
+  main.innerHTML = `
+    <div class="section text-center" style="max-width:520px;margin:0 auto">
+      <div class="card">
+        <div class="spinner" style="margin:0 auto 1.5rem"></div>
+        <h2>Payment Under Review</h2>
+        <p class="text-dim mt-2">Your payment of <strong class="text-emerald">${fmtCurrency(payment.amount)}</strong> for <strong>${escapeHtml(payment.serviceName || 'a service')}</strong> is being verified.</p>
+        <p class="text-sm text-muted mt-4">Submitted: ${fmtDateTime(payment.createdAt)}</p>
+        <div class="badge badge-amber mt-4">⏳ Pending Approval</div>
+        <button class="btn btn-ghost btn-block mt-4" onclick="refreshPaymentStatus()">🔄 Refresh Status</button>
+        <button class="btn btn-danger btn-block mt-2" onclick="cancelPendingPayment('${payment.id}')">Cancel Pending Payment</button>
+      </div>
+    </div>
+  `;
+}
+
+async function refreshPaymentStatus() {
+  showToast('Checking status...', 'info');
+  const remote = await syncPull();
+  if (remote) {
+    APP = { ...APP, ...remote };
+    saveLocal();
+    currentUser = APP.users.find((u) => u.id === currentUser.id) || currentUser;
+  }
+  const pending = APP.payments.find((p) => p.userId === currentUser.id && p.status === 'pending');
+  if (!pending) { showToast('Payment processed!', 'success'); renderApp(); }
+  else showToast('Still pending. Please wait.', 'info');
+}
+
+function cancelPendingPayment(paymentId) {
+  APP.payments = APP.payments.filter((p) => p.id !== paymentId);
+  save();
+  showToast('Payment cancelled.', 'info');
+  renderApp();
+}
+
+function showClientServices() {
+  showModal(`
+    <h2 class="mb-4">🛒 Services</h2>
+    <div class="grid-2">
+      ${APP.services.map((s) => `
+        <div class="service-card">
+          <div class="service-emoji">${s.emoji || '✨'}</div>
+          <h3 style="font-size:0.95rem">${escapeHtml(s.name)}</h3>
+          <p class="text-xs text-muted mb-2">${escapeHtml(s.description)}</p>
+          <div class="flex items-center gap-2 mb-3">
+            <span class="price-new">${fmtCurrency(s.price)}</span>
+            <span class="price-old">${fmtCurrency(s.mrp)}</span>
+          </div>
+          <button class="btn btn-primary btn-sm btn-block" onclick="bookService('${s.id}')">Book Now</button>
+        </div>
+      `).join('')}
+    </div>
+    <button class="btn btn-ghost btn-block mt-4" onclick="closeModal()">Close</button>
+  `);
+}
+function bookService(serviceId) {
+  const svc = APP.services.find((s) => s.id === serviceId);
+  if (!svc) return;
+  closeModal();
+  APP.orders.push({
+    id: uid('ord'), userId: currentUser.id, userName: currentUser.name,
+    serviceId: svc.id, serviceName: svc.name, price: svc.price,
+    status: 'pending', createdAt: new Date().toISOString(),
+  });
+  APP.notifications.push({ id: uid('notif'), userId: 'owner', title: 'New booking', body: currentUser.name + ' booked ' + svc.name, read: false, createdAt: new Date().toISOString() });
+  currentUser.points = (currentUser.points || 0) + 25;
+  save();
+  openPaymentModal(svc);
+}
+
+function openPaymentModal(svc) {
+  const ref = 'DF' + currentUser.id.slice(-5) + Date.now().toString().slice(-5);
+  const upiLink = buildUpiLink(svc.price, svc.name + ' — ' + currentUser.name, ref);
+
+  showModal(`
+    <h2 class="mb-2">💳 Complete Payment</h2>
+    <p class="text-dim text-sm mb-4">Scan the QR or use the UPI app link.</p>
+    <div class="text-center mb-4"><div class="qr-box" id="payQr"></div></div>
+    <div class="card-stat mb-4">
+      <div class="flex justify-between items-center mb-2"><span class="text-sm text-muted">Service</span><span class="text-sm">${escapeHtml(svc.name)}</span></div>
+      <div class="flex justify-between items-center mb-2"><span class="text-sm text-muted">Amount</span><span style="font-size:1.2rem;font-weight:800" class="text-emerald">${fmtCurrency(svc.price)}</span></div>
+      <div class="flex justify-between items-center"><span class="text-sm text-muted">UPI ID</span><span class="text-sm mono">${CONFIG.upiId}</span></div>
+    </div>
+    <div class="flex gap-2 mb-3 flex-wrap">
+      <button class="btn btn-ghost btn-block" onclick="copyUpiId()">📋 Copy UPI ID</button>
+      <a href="${upiLink}" class="btn btn-primary btn-block">📱 Pay via UPI</a>
+    </div>
+    <button class="btn btn-primary btn-block" onclick="confirmPaid('${svc.id}','${svc.price}','${escapeHtml(svc.name)}','${ref}')">✅ I Have Paid</button>
+    <button class="btn btn-ghost btn-block mt-2" onclick="closeModal()">Cancel</button>
+  `);
+
+  const qrEl = document.getElementById('payQr');
+  if (qrEl) renderQr(qrEl, upiLink);
+}
+
+function copyUpiId() {
+  navigator.clipboard.writeText(CONFIG.upiId)
+    .then(() => showToast('UPI ID copied!', 'success'))
+    .catch(() => showToast('UPI ID: ' + CONFIG.upiId, 'info'));
+}
+
+function confirmPaid(serviceId, amount, serviceName, ref) {
+  APP.payments.push({
+    id: uid('pay'), userId: currentUser.id, userName: currentUser.name,
+    serviceId, serviceName, amount: Number(amount), ref, method: 'UPI',
+    status: 'pending', createdAt: new Date().toISOString(), approvedAt: null,
+  });
+  APP.notifications.push({ id: uid('notif'), userId: 'owner', title: 'Payment pending review', body: currentUser.name + ' paid ' + fmtCurrency(amount) + ' for ' + serviceName, read: false, createdAt: new Date().toISOString() });
+  save();
+  closeModal();
+  showToast('Payment submitted!', 'success');
+  renderApp();
+}
+
+function showClientHistory() {
+  const myOrders = APP.orders.filter((o) => o.userId === currentUser.id).reverse();
+  const myPayments = APP.payments.filter((p) => p.userId === currentUser.id).reverse();
+  const myInquiries = APP.inquiries.filter((i) => i.userId === currentUser.id).reverse();
+
+  showModal(`
+    <h2 class="mb-4">📋 My History</h2>
+    <h3 class="mb-2 text-sm">Bookings</h3>
+    ${myOrders.length ? `
+      <div class="table-wrap mb-4">
+        <table><thead><tr><th>Service</th><th>Amount</th><th>Status</th></tr></thead><tbody>
+          ${myOrders.map((o) => `<tr><td>${escapeHtml(o.serviceName)}</td><td>${fmtCurrency(o.price)}</td>
+            <td><span class="badge ${o.status === 'delivered' ? 'badge-emerald' : 'badge-amber'}">${escapeHtml(o.status)}</span></td></tr>`).join('')}
+        </tbody></table>
+      </div>` : '<p class="text-muted text-sm mb-4">No bookings yet.</p>'}
+
+    <h3 class="mb-2 text-sm">Payments</h3>
+    ${myPayments.length ? `
+      <div class="table-wrap mb-4">
+        <table><thead><tr><th>Date</th><th>Amount</th><th>Status</th></tr></thead><tbody>
+          ${myPayments.map((p) => `<tr><td>${fmtDate(p.createdAt)}</td><td>${fmtCurrency(p.amount)}</td>
+            <td><span class="badge ${p.status === 'approved' ? 'badge-emerald' : p.status === 'rejected' ? 'badge-rose' : 'badge-amber'}">${p.status}</span></td></tr>`).join('')}
+        </tbody></table>
+      </div>` : '<p class="text-muted text-sm mb-4">No payments yet.</p>'}
+
+    <h3 class="mb-2 text-sm">Inquiries</h3>
+    ${myInquiries.length ? `
+      <div class="table-wrap mb-4">
+        <table><thead><tr><th>Subject</th><th>Status</th></tr></thead><tbody>
+          ${myInquiries.map((i) => `<tr><td>${escapeHtml(i.subject)}</td>
+            <td><span class="badge badge-cyan">${escapeHtml(i.status)}</span></td></tr>`).join('')}
+        </tbody></table>
+      </div>` : '<p class="text-muted text-sm">No inquiries yet.</p>'}
+
+    <button class="btn btn-ghost btn-block mt-4" onclick="closeModal()">Close</button>
+  `);
+}
+
+function showLeaveTestimonial() {
+  showModal(`
+    <h2 class="mb-4">⭐ Leave a Testimonial</h2>
+    <div class="field"><label>Your role / company</label><input id="tRole" type="text" placeholder="Founder, Acme Inc." /></div>
+    <div class="field"><label>Your testimonial</label><textarea id="tText" placeholder="What was it like working together?" required></textarea></div>
+    <button class="btn btn-primary btn-block" onclick="submitTestimonial()">Submit</button>
+    <button class="btn btn-ghost btn-block mt-2" onclick="closeModal()">Cancel</button>
+  `);
+}
+
+function submitTestimonial() {
+  const role = document.getElementById('tRole').value.trim();
+  const text = document.getElementById('tText').value.trim();
+  if (!text) { showToast('Please write your testimonial', 'error'); return; }
+  APP.testimonials.push({ id: uid('test'), userId: currentUser.id, author: currentUser.name, role: role || 'Client', text, createdAt: new Date().toISOString() });
+  currentUser.points = (currentUser.points || 0) + 75;
+  save();
+  closeModal();
+  showToast('Testimonial submitted! +75 points', 'success');
+  renderClientDashboard();
+}
+
+/* ============================================================
+   OWNER DASHBOARD
+   ============================================================ */
+function renderOwnerDashboard() {
+  const main = document.getElementById('mainView');
+  const clients = APP.users.filter((u) => u.role === 'client');
+  const totalRevenue = APP.payments.filter((p) => p.status === 'approved').reduce((s, p) => s + Number(p.amount || 0), 0);
+  const totalExpenses = APP.expenses.reduce((s, e) => s + Number(e.amount || 0), 0);
+  const profit = totalRevenue - totalExpenses;
+  const pendingPayments = APP.payments.filter((p) => p.status === 'pending');
+  const pendingOrders = APP.orders.filter((o) => o.status === 'pending');
+  const newInquiries = APP.inquiries.filter((i) => i.status === 'new');
+
+  main.innerHTML = `
+    <div class="section">
+      <div class="grid-4 mb-4">
+        <div class="card-stat"><div class="text-xs text-muted">Clients</div><div style="font-size:1.6rem;font-weight:800" class="text-cyan">${clients.length}</div></div>
+        <div class="card-stat"><div class="text-xs text-muted">Revenue</div><div style="font-size:1.3rem;font-weight:800" class="text-emerald">${fmtCurrency(totalRevenue)}</div></div>
+        <div class="card-stat"><div class="text-xs text-muted">Expenses</div><div style="font-size:1.3rem;font-weight:800" class="text-rose">${fmtCurrency(totalExpenses)}</div></div>
+        <div class="card-stat"><div class="text-xs text-muted">Profit</div><div style="font-size:1.3rem;font-weight:800 ${profit >= 0 ? 'color:var(--emerald)' : 'color:var(--rose)'}">${fmtCurrency(profit)}</div></div>
+      </div>
+
+      <div class="flex gap-2 mb-4 flex-wrap">
+        <button class="btn btn-primary btn-sm" onclick="showBroadcast()">📢 Broadcast</button>
+        <button class="btn btn-ghost btn-sm" onclick="showAddExpense()">💰 Add Expense</button>
+        <button class="btn btn-ghost btn-sm" onclick="showLeaderboard()">🏆 Leaderboard</button>
+        <button class="btn btn-ghost btn-sm" onclick="showManageContent()">✏️ Manage Content</button>
+        <button class="btn btn-ghost btn-sm" onclick="exportBackup()">📥 Export Backup</button>
+      </div>
+
+      ${(pendingPayments.length || pendingOrders.length || newInquiries.length) ? `
+        <div class="card mb-4" style="border-color:rgba(245,158,11,0.35)">
+          <h3 class="mb-4">⏳ Pending Items</h3>
+          ${newInquiries.map((i) => `
+            <div class="flex justify-between items-center mb-2 card-stat flex-wrap" style="gap:0.5rem">
+              <div><strong style="font-size:0.9rem">${escapeHtml(i.name)}</strong>
+                <div class="text-xs text-muted">${escapeHtml(i.email)} · ${escapeHtml(i.subject)}</div></div>
+              <div class="flex gap-2">
+                <button class="btn btn-ghost btn-sm" onclick="viewInquiry('${i.id}')">View</button>
+                <button class="btn btn-primary btn-sm" onclick="markInquiryRead('${i.id}')">Mark Read</button>
+              </div>
+            </div>
+          `).join('')}
+
+          ${pendingOrders.map((o) => `
+            <div class="flex justify-between items-center mb-2 card-stat flex-wrap" style="gap:0.5rem">
+              <div><strong style="font-size:0.9rem">${escapeHtml(o.userName)}</strong>
+                <div class="text-xs text-muted">Booking · ${escapeHtml(o.serviceName)} · ${fmtCurrency(o.price)}</div></div>
+              <div class="flex gap-2">
+                <button class="btn btn-primary btn-sm" onclick="updateOrderStatus('${o.id}','in-progress')">Start</button>
+                <button class="btn btn-ghost btn-sm" onclick="updateOrderStatus('${o.id}','delivered')">Mark Done</button>
+              </div>
+            </div>
+          `).join('')}
+
+          ${pendingPayments.map((p) => {
+            const u = APP.users.find((x) => x.id === p.userId);
+            return `
+              <div class="flex justify-between items-center mb-2 card-stat flex-wrap" style="gap:0.5rem">
+                <div><strong style="font-size:0.9rem">${escapeHtml(u ? u.name : 'Unknown')}</strong>
+                  <div class="text-xs text-muted">Payment · ${fmtCurrency(p.amount)} · ${escapeHtml(p.serviceName || '')} · Ref ${escapeHtml(p.ref || '')}</div></div>
+                <div class="flex gap-2">
+                  <button class="btn btn-primary btn-sm" onclick="approvePayment('${p.id}')">Approve</button>
+                  <button class="btn btn-danger btn-sm" onclick="rejectPayment('${p.id}')">Reject</button>
+                </div>
+              </div>`;
+          }).join('')}
+        </div>
+      ` : ''}
+
+      <div class="card mb-4">
+        <h3 class="mb-4">📊 6-Month Revenue</h3>
+        <div class="chart-wrap">${renderRevenueChart()}</div>
+      </div>
+
+      <div class="card mb-4">
+        <div class="flex justify-between items-center mb-4 flex-wrap" style="gap:0.75rem">
+          <h3>👥 Clients</h3>
+          <input type="search" placeholder="Search name, email, company…" oninput="filterClients(this.value)" id="clientSearch"
+            style="max-width:280px;padding:0.6rem 1rem;border-radius:999px;border:1px solid var(--border);background:var(--surface-2);color:var(--text);font-size:0.85rem" />
+        </div>
+        <div class="table-wrap">
+          <table id="clientsTable">
+            <thead><tr><th>Name</th><th>Username</th><th>Company</th><th>Email</th><th>Points</th><th>Joined</th></tr></thead>
+            <tbody>
+              ${clients.map((c) => `
+                <tr data-search="${escapeHtml(((c.name || '') + ' ' + (c.username || '') + ' ' + (c.email || '') + ' ' + (c.companyName || '')).toLowerCase())}">
+                  <td>${escapeHtml(c.name)}</td>
+                  <td class="text-muted">${escapeHtml(c.username)}</td>
+                  <td>${escapeHtml(c.companyName || '—')}</td>
+                  <td>${escapeHtml(c.email || '—')}</td>
+                  <td class="text-cyan">${c.points || 0}</td>
+                  <td>${fmtDate(c.joinedAt)}</td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function filterClients(q) {
+  const query = q.toLowerCase().trim();
+  document.querySelectorAll('#clientsTable tbody tr').forEach((tr) => {
+    tr.style.display = (tr.dataset.search || '').includes(query) ? '' : 'none';
+  });
+}
+
+function renderRevenueChart() {
+  const months = [];
+  const now = new Date();
+  for (let i = 5; i >= 0; i--) {
+    const d = new Date(now.getFullYear(), now.getMonth() - i, 1);
+    const key = d.toISOString().slice(0, 7);
+    const label = d.toLocaleString('en', { month: 'short' });
+    const total = APP.payments.filter((p) => p.status === 'approved' && (p.approvedAt || p.createdAt || '').startsWith(key)).reduce((s, p) => s + Number(p.amount || 0), 0);
+    months.push({ label, total });
+  }
+  const max = Math.max(...months.map((m) => m.total), 1);
+  const w = 520, h = 180, pad = 30;
+  const barW = (w - pad * 2) / months.length - 12;
+  const bars = months.map((m, i) => {
+    const barH = ((m.total / max) * (h - pad * 2)) || 0;
+    const x = pad + i * ((w - pad * 2) / months.length) + 6;
+    const y = h - pad - barH;
+    return `
+      <rect class="chart-bar" x="${x}" y="${y}" width="${barW}" height="${barH}" rx="6" />
+      <text class="chart-value" x="${x + barW / 2}" y="${y - 5}">${m.total > 0 ? '₹' + Math.round(m.total / 1000) + 'k' : ''}</text>
+      <text class="chart-label" x="${x + barW / 2}" y="${h - 8}">${m.label}</text>
+    `;
+  }).join('');
+  return `
+    <svg viewBox="0 0 ${w} ${h}" style="width:100%;height:auto;min-width:480px">
+      <defs><linearGradient id="barGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8b5cf6" /><stop offset="100%" stop-color="#22d3ee" /></linearGradient></defs>
+      ${bars}
+    </svg>
+  `;
+}
+
+/* ============================================================
+   OWNER ACTIONS
+   ============================================================ */
+function viewInquiry(id) {
+  const i = APP.inquiries.find((x) => x.id === id);
+  if (!i) return;
+  showModal(`
+    <h2 class="mb-2">${escapeHtml(i.subject)}</h2>
+    <p class="text-sm text-muted mb-4">From <strong>${escapeHtml(i.name)}</strong> · ${escapeHtml(i.email)}</p>
+    <div class="card-stat mb-4"><p class="text-dim">${escapeHtml(i.message)}</p></div>
+    <button class="btn btn-primary btn-block" onclick="markInquiryRead('${id}');closeModal()">Mark Read</button>
+    <button class="btn btn-ghost btn-block mt-2" onclick="closeModal()">Close</button>
+  `);
+}
+function markInquiryRead(id) {
+  const i = APP.inquiries.find((x) => x.id === id);
+  if (!i) return;
+  i.status = 'read';
+  save(); renderOwnerDashboard();
+}
+
+function updateOrderStatus(orderId, status) {
+  const o = APP.orders.find((x) => x.id === orderId);
+  if (!o) return;
+  o.status = status;
+  APP.notifications.push({ id: uid('notif'), userId: o.userId, title: status === 'in-progress' ? 'Work started! 🚀' : 'Project delivered ✅', body: o.serviceName + ' is ' + status + '.', read: false, createdAt: new Date().toISOString() });
+  if (status === 'delivered') {
+    const u = APP.users.find((x) => x.id === o.userId);
+    if (u) u.points = (u.points || 0) + 50;
+  }
+  save(); showToast('Order updated', 'success'); renderOwnerDashboard();
+}
+
+function approvePayment(paymentId) {
+  const p = APP.payments.find((x) => x.id === paymentId);
+  if (!p) return;
+  p.status = 'approved';
+  p.approvedAt = new Date().toISOString();
+  const u = APP.users.find((x) => x.id === p.userId);
+  if (u) {
+    u.points = (u.points || 0) + 25;
+    APP.notifications.push({ id: uid('notif'), userId: u.id, title: 'Payment Approved! ✅', body: 'Your booking for ' + (p.serviceName || 'a service') + ' is confirmed.', read: false, createdAt: new Date().toISOString() });
+  }
+  save(); showToast('Payment approved!', 'success'); renderOwnerDashboard();
+}
+function rejectPayment(paymentId) {
+  const p = APP.payments.find((x) => x.id === paymentId);
+  if (!p) return;
+  p.status = 'rejected';
+  APP.notifications.push({ id: uid('notif'), userId: p.userId, title: 'Payment Rejected', body: 'Please contact ' + CONFIG.email + '.', read: false, createdAt: new Date().toISOString() });
+  save(); showToast('Payment rejected.', 'info'); renderOwnerDashboard();
+}
+
+function showBroadcast() {
+  showModal(`
+    <h2 class="mb-4">📢 Broadcast Announcement</h2>
+    <div class="field"><label>Title</label><input id="bcTitle" type="text" placeholder="New service available!" /></div>
+    <div class="field"><label>Message</label><textarea id="bcBody" placeholder="I've launched a new…"></textarea></div>
+    <button class="btn btn-primary btn-block" onclick="sendBroadcast()">Send to All Clients</button>
+    <button class="btn btn-ghost btn-block mt-2" onclick="closeModal()">Cancel</button>
+  `);
+}
+function sendBroadcast() {
+  const title = document.getElementById('bcTitle').value.trim();
+  const body = document.getElementById('bcBody').value.trim();
+  if (!title || !body) { showToast('Fill both fields', 'error'); return; }
+  APP.announcements.push({ id: uid('ann'), title, body, createdAt: new Date().toISOString() });
+  APP.users.filter((u) => u.role === 'client').forEach((u) => {
+    APP.notifications.push({ id: uid('notif'), userId: u.id, title: '📢 ' + title, body, read: false, createdAt: new Date().toISOString() });
+  });
+  save(); closeModal(); showToast('Broadcast sent!', 'success');
+}
+
+function showAddExpense() {
+  showModal(`
+    <h2 class="mb-4">💰 Add Expense</h2>
+    <div class="field"><label>Category</label>
+      <select id="expCat"><option>Tools / SaaS</option><option>Hosting</option><option>Domain</option><option>Hardware</option><option>Marketing</option><option>Other</option></select></div>
+    <div class="field"><label>Amount (₹)</label><input id="expAmt" type="number" placeholder="5000" /></div>
+    <div class="field"><label>Note</label><input id="expNote" type="text" placeholder="Optional" /></div>
+    <button class="btn btn-primary btn-block" onclick="addExpense()">Save</button>
+    <button class="btn btn-ghost btn-block mt-2" onclick="closeModal()">Cancel</button>
+  `);
+}
+function addExpense() {
+  const category = document.getElementById('expCat').value;
+  const amount = Number(document.getElementById('expAmt').value);
+  const note = document.getElementById('expNote').value.trim();
+  if (!amount || amount <= 0) { showToast('Enter a valid amount', 'error'); return; }
+  APP.expenses.push({ id: uid('exp'), category, amount, note, createdAt: new Date().toISOString() });
+  save(); closeModal(); showToast('Expense added!', 'success'); renderOwnerDashboard();
+}
+
+function showLeaderboard() {
+  const clients = APP.users.filter((u) => u.role === 'client');
+  const sorted = [...clients].sort((a, b) => (b.points || 0) - (a.points || 0)).slice(0, 10);
+  showModal(`
+    <h2 class="mb-4">🏆 Top 10 Clients</h2>
+    ${sorted.map((c, i) => {
+      const medals = ['🥇', '🥈', '🥉'];
+      return `
+        <div class="flex justify-between items-center mb-2 card-stat">
+          <div class="flex items-center gap-3">
+            <span style="font-size:1.3rem">${medals[i] || '#' + (i + 1)}</span>
+            <div><strong style="font-size:0.9rem">${escapeHtml(c.name)}</strong>
+              <div class="text-xs text-muted">${escapeHtml(c.companyName || '—')}</div></div>
+          </div>
+          <span class="text-cyan" style="font-weight:700">${c.points || 0} pts</span>
+        </div>`;
+    }).join('') || '<p class="text-muted text-sm">No clients yet.</p>'}
+    <button class="btn btn-ghost btn-block mt-4" onclick="closeModal()">Close</button>
+  `);
+}
+
+function exportBackup() {
+  const blob = new Blob([JSON.stringify(APP, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'devfolio-backup-' + new Date().toISOString().slice(0, 10) + '.json';
+  a.click();
+  URL.revokeObjectURL(url);
+  showToast('Backup downloaded!', 'success');
+}
+
+/* ============================================================
+   MANAGE CONTENT
+   ============================================================ */
+function showManageContent() {
+  showModal(`
+    <h2 class="mb-4">✏️ Manage Portfolio Content</h2>
+    <div class="grid-2 mb-4">
+      <button class="btn btn-ghost btn-block" onclick="showEditProjects()">📁 Projects (${APP.projects.length})</button>
+      <button class="btn btn-ghost btn-block" onclick="showEditAchievements()">🏅 Achievements (${APP.achievements.length})</button>
+      <button class="btn btn-ghost btn-block" onclick="showEditSkills()">🧠 Skills (${APP.skills.length})</button>
+      <button class="btn btn-ghost btn-block" onclick="showEditServices()">💼 Services (${APP.services.length})</button>
+      <button class="btn btn-ghost btn-block" onclick="showEditTestimonials()">💬 Testimonials (${APP.testimonials.length})</button>
+    </div>
+    <button class="btn btn-primary btn-block" onclick="closeModal()">Done</button>
+  `);
+}
+
+function showEditProjects() {
+  showModal(`
+    <h2 class="mb-3">📁 Projects</h2>
+    <div class="mb-4">
+      ${APP.projects.map((p) => `
+        <div class="flex justify-between items-center mb-2 card-stat">
+          <div><strong style="font-size:0.9rem">${p.emoji || '💻'} ${escapeHtml(p.title)}</strong></div>
+          <button class="btn btn-danger btn-sm" onclick="deleteProject('${p.id}')">Delete</button>
+        </div>
+      `).join('')}
+    </div>
+    <h3 class="text-sm mb-2">Add new project</h3>
+    <div class="field"><label>Title</label><input id="npTitle" /></div>
+    <div class="field"><label>Emoji</label><input id="npEmoji" placeholder="🚀" maxlength="4" /></div>
+    <div class="field"><label>Description</label><textarea id="npDesc"></textarea></div>
+    <div class="field"><label>Tech (comma-separated)</label><input id="npTech" placeholder="React, Node.js" /></div>
+    <div class="field"><label>Demo URL</label><input id="npDemo" /></div>
+    <div class="field"><label>Code URL</label><input id="npCode" /></div>
+    <button class="btn btn-primary btn-block" onclick="addProject()">Add Project</button>
+    <button class="btn btn-ghost btn-block mt-2" onclick="showManageContent()">← Back</button>
+  `);
+}
+function addProject() {
+  const title = document.getElementById('npTitle').value.trim();
+  const desc = document.getElementById('npDesc').value.trim();
+  if (!title || !desc) { showToast('Title and description required', 'error'); return; }
+  APP.projects.push({
+    id: uid('prj'), title, description: desc,
+    emoji: document.getElementById('npEmoji').value.trim() || '💻',
+    tech: document.getElementById('npTech').value.split(',').map((s) => s.trim()).filter(Boolean),
+    demoUrl: document.getElementById('npDemo').value.trim(),
+    codeUrl: document.getElementById('npCode').value.trim(),
+  });
+  save(); showToast('Project added!', 'success'); showEditProjects();
+}
+function deleteProject(id) {
+  APP.projects = APP.projects.filter((p) => p.id !== id);
+  save(); showEditProjects();
+}
+
+function showEditAchievements() {
+  showModal(`
+    <h2 class="mb-3">🏅 Achievements</h2>
+    <div class="mb-4">
+      ${APP.achievements.map((a) => `
+        <div class="flex justify-between items-center mb-2 card-stat">
+          <div><strong style="font-size:0.9rem">${a.icon} ${escapeHtml(a.title)}</strong>
+            <div class="text-xs text-muted">${escapeHtml(a.year)}</div></div>
+          <button class="btn btn-danger btn-sm" onclick="deleteAchievement('${a.id}')">Delete</button>
+        </div>
+      `).join('')}
+    </div>
+    <h3 class="text-sm mb-2">Add new</h3>
+    <div class="field"><label>Year</label><input id="naYear" placeholder="2025" /></div>
+    <div class="field"><label>Icon (emoji)</label><input id="naIcon" placeholder="🥇" maxlength="4" /></div>
+    <div class="field"><label>Title</label><input id="naTitle" /></div>
+    <div class="field"><label>Description</label><textarea id="naDesc"></textarea></div>
+    <button class="btn btn-primary btn-block" onclick="addAchievement()">Add</button>
+    <button class="btn btn-ghost btn-block mt-2" onclick="showManageContent()">← Back</button>
+  `);
+}
+function addAchievement() {
+  const title = document.getElementById('naTitle').value.trim();
+  const year = document.getElementById('naYear').value.trim();
+  if (!title || !year) { showToast('Year and title required', 'error'); return; }
+  APP.achievements.push({
+    id: uid('ach'), year, title,
+    icon: document.getElementById('naIcon').value.trim() || '🏅',
+    description: document.getElementById('naDesc').value.trim(),
+  });
+  save(); showToast('Achievement added!', 'success'); showEditAchievements();
+}
+function deleteAchievement(id) {
+  APP.achievements = APP.achievements.filter((a) => a.id !== id);
+  save(); showEditAchievements();
+}
+
+function showEditSkills() {
+  showModal(`
+    <h2 class="mb-3">🧠 Skills</h2>
+    <div class="mb-4">
+      ${APP.skills.map((g) => `
+        <div class="card-stat mb-2">
+          <div class="flex justify-between items-center mb-2">
+            <strong>${escapeHtml(g.category)}</strong>
+            <button class="btn btn-danger btn-sm" onclick="deleteSkillGroup('${g.id}')">Delete</button>
+          </div>
+          <div class="text-xs text-muted">${(g.skills || []).join(', ')}</div>
+        </div>
+      `).join('')}
+    </div>
+    <h3 class="text-sm mb-2">Add group</h3>
+    <div class="field"><label>Category</label><input id="nsCat" placeholder="Frontend" /></div>
+    <div class="field"><label>Skills (comma-separated)</label><input id="nsList" placeholder="React, CSS, JS" /></div>
+    <button class="btn btn-primary btn-block" onclick="addSkillGroup()">Add</button>
+    <button class="btn btn-ghost btn-block mt-2" onclick="showManageContent()">← Back</button>
+  `);
+}
+function addSkillGroup() {
+  const category = document.getElementById('nsCat').value.trim();
+  const skills = document.getElementById('nsList').value.split(',').map((s) => s.trim()).filter(Boolean);
+  if (!category || !skills.length) { showToast('Category and skills required', 'error'); return; }
+  APP.skills.push({ id: uid('sk'), category, skills });
+  save(); showToast('Skill group added!', 'success'); showEditSkills();
+}
+function deleteSkillGroup(id) {
+  APP.skills = APP.skills.filter((s) => s.id !== id);
+  save(); showEditSkills();
+}
+
+function showEditServices() {
+  showModal(`
+    <h2 class="mb-3">💼 Services</h2>
+    <div class="mb-4">
+      ${APP.services.map((s) => `
+        <div class="flex justify-between items-center mb-2 card-stat">
+          <div><strong style="font-size:0.9rem">${s.emoji} ${escapeHtml(s.name)}</strong>
+            <div class="text-xs text-muted">${fmtCurrency(s.price)} / ${s.unit || 'unit'}</div></div>
+          <button class="btn btn-danger btn-sm" onclick="deleteService('${s.id}')">Delete</button>
+        </div>
+      `).join('')}
+    </div>
+    <h3 class="text-sm mb-2">Add new service</h3>
+    <div class="field"><label>Emoji</label><input id="nsvEmoji" placeholder="🚀" maxlength="4" /></div>
+    <div class="field"><label>Name</label><input id="nsvName" /></div>
+    <div class="field"><label>Description</label><textarea id="nsvDesc"></textarea></div>
+    <div class="field"><label>MRP (₹)</label><input id="nsvMrp" type="number" /></div>
+    <div class="field"><label>Price (₹)</label><input id="nsvPrice" type="number" /></div>
+    <div class="field"><label>Unit (session / project)</label><input id="nsvUnit" placeholder="session" /></div>
+    <button class="btn btn-primary btn-block" onclick="addService()">Add</button>
+    <button class="btn btn-ghost btn-block mt-2" onclick="showManageContent()">← Back</button>
+  `);
+}
+function addService() {
+  const name = document.getElementById('nsvName').value.trim();
+  const price = Number(document.getElementById('nsvPrice').value);
+  if (!name || !price) { showToast('Name and price required', 'error'); return; }
+  APP.services.push({
+    id: uid('svc'), name,
+    emoji: document.getElementById('nsvEmoji').value.trim() || '✨',
+description: document.getElementById('nsvDesc').value.trim(),
+    mrp: Number(document.getElementById('nsvMrp').value) || price * 2,
+    price, unit: document.getElementById('nsvUnit').value.trim() || 'unit',
+  });
+  save(); showToast('Service added!', 'success'); showEditServices();
+}
+function deleteService(id) {
+  APP.services = APP.services.filter((s) => s.id !== id);
+  save(); showEditServices();
+}
+
+function showEditTestimonials() {
+  showModal(`
+    <h2 class="mb-3">💬 Testimonials</h2>
+    <div class="mb-4">
+      ${APP.testimonials.map((t) => `
+        <div class="flex justify-between items-center mb-2 card-stat">
+          <div>
+            <strong style="font-size:0.9rem">${escapeHtml(t.author)}</strong>
+            <div class="text-xs text-muted">${escapeHtml(t.role || 'Client')}</div>
+            <div class="text-xs text-dim mt-1" style="max-width:340px">${escapeHtml(t.text)}</div>
+          </div>
+          <button class="btn btn-danger btn-sm" onclick="deleteTestimonial('${t.id}')">Delete</button>
+        </div>
+      `).join('') || '<p class="text-muted text-sm mb-4">No testimonials yet.</p>'}
+    </div>
+    <h3 class="text-sm mb-2">Add testimonial</h3>
+    <div class="field"><label>Author name</label><input id="ntAuthor" placeholder="Jane Doe" /></div>
+    <div class="field"><label>Role / company</label><input id="ntRole" placeholder="Founder, Acme Inc." /></div>
+    <div class="field"><label>Testimonial text</label><textarea id="ntText" placeholder="What was it like working together?"></textarea></div>
+    <button class="btn btn-primary btn-block" onclick="addTestimonial()">Add</button>
+    <button class="btn btn-ghost btn-block mt-2" onclick="showManageContent()">← Back</button>
+  `);
+}
+function addTestimonial() {
+  const author = document.getElementById('ntAuthor').value.trim();
+  const role = document.getElementById('ntRole').value.trim();
+  const text = document.getElementById('ntText').value.trim();
+  if (!author || !text) { showToast('Author and text required', 'error'); return; }
+  APP.testimonials.push({ id: uid('test'), author, role: role || 'Client', text, createdAt: new Date().toISOString() });
+  save(); showToast('Testimonial added!', 'success'); showEditTestimonials();
+}
+function deleteTestimonial(id) {
+  APP.testimonials = APP.testimonials.filter((t) => t.id !== id);
+  save(); showEditTestimonials();
+}
+
+/* ============================================================
+   NOTIFICATIONS
+   ============================================================ */
+function showNotifications() {
+  const mine = APP.notifications.filter((n) => n.userId === currentUser.id).reverse();
+  showModal(`
+    <h2 class="mb-4">🔔 Notifications</h2>
+    ${mine.length ? mine.map((n) => `
+      <div class="card mb-2" style="padding:1rem">
+        <div class="flex justify-between items-center">
+          <strong style="font-size:0.9rem">${escapeHtml(n.title)}</strong>
+          ${!n.read ? '<span class="badge badge-violet">New</span>' : ''}
+        </div>
+        <p class="text-sm text-muted mt-1">${escapeHtml(n.body)}</p>
+        <p class="text-xs text-muted mt-1">${fmtDateTime(n.createdAt)}</p>
+      </div>
+    `).join('') : '<p class="text-muted text-sm">No notifications.</p>'}
+    <button class="btn btn-ghost btn-block mt-4" onclick="markAllRead();closeModal()">Mark All Read</button>
+  `);
+}
+function markAllRead() {
+  APP.notifications.forEach((n) => { if (n.userId === currentUser.id) n.read = true; });
+  save();
+  renderApp();
+}
+
+/* ============================================================
+   PROFILE
+   ============================================================ */
+function showProfile() {
+  showModal(`
+    <h2 class="mb-4">👤 My Profile</h2>
+    <div class="text-center mb-4">
+      <div style="width:80px;height:80px;border-radius:50%;margin:0 auto;background:var(--grad);display:grid;place-items:center;font-size:2rem;overflow:hidden">
+        ${currentUser.avatarData ? `<img src="${currentUser.avatarData}" style="width:100%;height:100%;object-fit:cover" />` : '👤'}
+      </div>
+      <label class="btn btn-ghost btn-sm mt-2" style="cursor:pointer;display:inline-flex">
+        📷 Change Photo
+        <input type="file" accept="image/*" style="display:none" onchange="uploadAvatar(event)" />
+      </label>
+    </div>
+    <div class="field"><label>Name</label><input type="text" value="${escapeHtml(currentUser.name)}" onchange="updateProfile('name', this.value)" /></div>
+    <div class="field"><label>Email</label><input type="email" value="${escapeHtml(currentUser.email || '')}" onchange="updateProfile('email', this.value)" /></div>
+    <div class="field"><label>Phone</label><input type="tel" value="${escapeHtml(currentUser.phone || '')}" onchange="updateProfile('phone', this.value)" /></div>
+    ${currentUser.role === 'client' ? `<div class="field"><label>Company</label><input type="text" value="${escapeHtml(currentUser.companyName || '')}" onchange="updateProfile('companyName', this.value)" /></div>` : ''}
+    <button class="btn btn-primary btn-block" onclick="closeModal();showToast('Profile saved!','success')">Save</button>
+  `);
+}
+function updateProfile(key, value) {
+  currentUser[key] = value;
+  const idx = APP.users.findIndex((u) => u.id === currentUser.id);
+  if (idx >= 0) APP.users[idx] = currentUser;
+  save();
+}
+function uploadAvatar(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    currentUser.avatarData = e.target.result;
+    updateProfile('avatarData', e.target.result);
+    showToast('Photo updated!', 'success');
+    showProfile();
+  };
+  reader.readAsDataURL(file);
+}
+
+/* ============================================================
+   PWA
+   ============================================================ */
+function setupPwa() {
+  const iconSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192"><rect width="192" height="192" rx="42" fill="#070b14"/><text x="96" y="130" font-size="100" text-anchor="middle" fill="#8b5cf6" font-family="monospace">&lt;/&gt;</text></svg>`;
+  const iconUrl = 'data:image/svg+xml;base64,' + btoa(iconSvg);
+  const manifest = {
+    name: 'DevFolio Portfolio', short_name: 'DevFolio',
+    description: 'Full-stack developer portfolio and services',
+    start_url: '/', display: 'standalone',
+    background_color: '#070b14', theme_color: '#070b14',
+    icons: [
+      { src: iconUrl, sizes: '192x192', type: 'image/svg+xml', purpose: 'any maskable' },
+      { src: iconUrl, sizes: '512x512', type: 'image/svg+xml', purpose: 'any maskable' },
+    ],
+  };
+  const manifestBlob = new Blob([JSON.stringify(manifest)], { type: 'application/json' });
+  const manifestUrl = URL.createObjectURL(manifestBlob);
+  const link = document.createElement('link');
+  link.rel = 'manifest'; link.href = manifestUrl;
+  document.head.appendChild(link);
+  const appleIcon = document.createElement('link');
+  appleIcon.rel = 'apple-touch-icon'; appleIcon.href = iconUrl;
+  document.head.appendChild(appleIcon);
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js').catch(() => log('SW registration failed'));
+  }
+}
+
+/* ============================================================
+   START
+   ============================================================ */
+setupPwa();
+boot().catch((err) => {
+  console.error('Boot failed:', err);
+  document.getElementById('loadingScreen').innerHTML =
+    '<div class="text-center"><p class="text-rose">Failed to load. Check your connection.</p>' +
+    '<button class="btn btn-ghost mt-4" onclick="location.reload()">Retry</button></div>';
+});
+</script>
+</body>
+</html>

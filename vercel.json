@@ -1,0 +1,9 @@
+{
+  "version": 2,
+  "buildCommand": "prisma generate",
+  "outputDirectory": "public",
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "/api/sync" }
+  ]
+ 
+}
